@@ -187,7 +187,7 @@ const submitPlan = async () => {
     await new Promise(resolve => setTimeout(resolve, 1500));
 
     // Navigate to next page
-    router.push('/investment-summary');
+    router.push('/uploadDocumentation');
   } catch (error) {
     console.error('Error submitting plan:', error);
     alert('An error occurred while submitting your investment plan. Please try again.');
