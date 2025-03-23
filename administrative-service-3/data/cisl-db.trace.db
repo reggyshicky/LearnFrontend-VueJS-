@@ -1,0 +1,3 @@
+2025-03-20 18:06:54.540970+03:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "HTE_CISL_CUSTOMERS" already exists; SQL statement:
+create global temporary table HTE_cisl_customers(rn_ integer not null, id bigint, primary key (rn_)) TRANSACTIONAL [42101-232]

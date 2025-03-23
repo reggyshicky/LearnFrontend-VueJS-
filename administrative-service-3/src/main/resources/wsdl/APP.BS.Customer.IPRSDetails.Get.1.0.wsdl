@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:ns="urn://co-opbank.co.ke/CommonServices/Internal/TS/IPRS" xmlns:ns0="http://schemas.datacontract.org/2004/07/IPRSManager/CommonData" xmlns:ns01="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext" xmlns:ns012="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" xmlns:ns0123="urn://co-opbank.co.ke/CommonServices/Data/Common" xmlns:ns01234="urn://co-opbank.co.ke/CommonServices/Data/Event/Fault" xmlns:ns012345="urn://co-opbank.co.ke/Banking/External/IPRS/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="IPRS2" targetNamespace="urn://co-opbank.co.ke/CommonServices/Internal/TS/IPRS">
+  <wsdl:types>
+    <xsd:schema xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:ns0="urn://co-opbank.co.ke/Banking/External/IPRS/1.0" xmlns:ns01="http://schemas.datacontract.org/2004/07/IPRSManager/CommonData" xmlns:ns012="urn://co-opbank.co.ke/CommonServices/Data/Common" xmlns:ns0123="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext" xmlns:ns012345="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/IPRSManager/CommonData">
+      <xsd:complexType name="GetIPRSDataByGenericID">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="log" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="pass" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="doc_type" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="doc_number" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="serial_number" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HumanInfoCommon">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="FirstName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MiddleName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Gender" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DateOfBirth" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DocumentType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DocumentNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DocumentSerial" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Photo" nillable="true" type="xsd:base64Binary"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:ns0="urn://co-opbank.co.ke/Banking/External/IPRS/1.0" xmlns:ns01="http://schemas.datacontract.org/2004/07/IPRSManager/CommonData" xmlns:ns012="urn://co-opbank.co.ke/CommonServices/Data/Common" xmlns:ns0123="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext" xmlns:ns012345="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" elementFormDefault="qualified" targetNamespace="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext">
+      <xsd:element name="RuntimeContext" type="ns0123:RuntimeContextType"/>
+      <xsd:element name="ServiceName" type="xsd:string"/>
+      <!-- <xsd:element name="Application" type="xsd:string"/> -->
+      <xsd:element name="ApplicationVersion" type="xsd:string"/>
+      <xsd:element name="AppNode" type="xsd:string"/>
+      <!-- <xsd:element name="Hostname" type="xsd:string"/> -->
+      <xsd:complexType name="RuntimeContextType">
+        <xsd:sequence>
+          <xsd:element ref="ns0123:ServiceName"/>
+          <!-- <xsd:element ref="ns0123:Application"/> -->
+          <xsd:element ref="ns0123:ApplicationVersion"/>
+          <xsd:element ref="ns0123:AppNode"/>
+          <!-- <xsd:element ref="ns0123:Hostname"/> -->
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:com="urn://co-opbank.co.ke/CommonServices/Data/Common" xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:ns0="urn://co-opbank.co.ke/Banking/External/IPRS/1.0" xmlns:ns01="http://schemas.datacontract.org/2004/07/IPRSManager/CommonData" xmlns:ns0123="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext" xmlns:ns012345="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" elementFormDefault="qualified" targetNamespace="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader">
+      <xsd:import namespace="urn://co-opbank.co.ke/CommonServices/Data/Common"/>
+      <!-- <xsd:element name="ApplicationVersion" type="xsd:string"/> -->
+      <xsd:element name="RequestHeader" type="ns012345:RequestHeaderType"/>
+      <xsd:element name="ResponseHeader" type="ns012345:ResponseHeaderType"/>
+      <xsd:element name="FaultTO" type="xsd:string"/>
+      <xsd:element name="MessageID" type="xsd:string"/>
+      <xsd:element name="ReplyTO" type="xsd:string"/>
+      <xsd:element name="Credentials" type="ns012345:CredentialsType"/>
+      <xsd:element name="ElapsedTime" type="xsd:long"/>
+      <xsd:element name="StatusCode" type="xsd:string"/>
+      <xsd:element name="StatusDescription" type="xsd:string"/>
+      <xsd:element name="StatusDescriptionKey" type="xsd:string"/>
+      <xsd:element name="StatusMessages" type="ns012345:StatusMessagesType"/>
+      <xsd:complexType name="RequestHeaderType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="com:CreationTimestamp"/>
+          <xsd:element minOccurs="0" ref="com:CorrelationID"/>
+          <xsd:element minOccurs="0" ref="ns012345:FaultTO"/>
+          <xsd:element minOccurs="1" ref="ns012345:MessageID"/>
+          <xsd:element minOccurs="0" ref="ns012345:ReplyTO"/>
+          <xsd:element minOccurs="0" ref="ns012345:Credentials"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResponseHeaderType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="com:CorrelationID"/>
+          <xsd:element minOccurs="0" ref="ns012345:ElapsedTime"/>
+          <xsd:element minOccurs="1" ref="ns012345:MessageID"/>
+          <xsd:element minOccurs="0" ref="ns012345:StatusCode"/>
+          <xsd:element minOccurs="0" ref="ns012345:StatusDescription"/>
+          <xsd:element minOccurs="0" ref="ns012345:StatusDescriptionKey"/>
+          <xsd:element minOccurs="0" ref="ns012345:StatusMessages"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CredentialsType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SystemCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Username" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Password" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Realm" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StatusMessagesType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ApplicationID" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MessageCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MessageDescription" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MessageType" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:ns0="urn://co-opbank.co.ke/Banking/External/IPRS/1.0" xmlns:ns01="http://schemas.datacontract.org/2004/07/IPRSManager/CommonData" xmlns:ns0123="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext" xmlns:ns012345="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" xmlns:tns="urn://co-opbank.co.ke/CommonServices/Data/Common" elementFormDefault="qualified" targetNamespace="urn://co-opbank.co.ke/CommonServices/Data/Common">
+      <xsd:element name="CorrelationId" type="xsd:string"/>
+      <xsd:element name="CustomerId">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:length value="9"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CreationTimestamp" type="xsd:dateTime"/>
+      <xsd:element name="CorrelationID" type="xsd:string"/>
+      <!-- <xsd:element name="MessageID" type="xsd:string"/> -->
+      <xsd:element name="Payload" type="tns:PayloadType"/>
+      <xsd:element name="Domain" type="xsd:string"/>
+      <xsd:complexType name="PayloadType">
+        <xsd:sequence>
+          <xsd:any minOccurs="0" namespace="##any" processContents="skip"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:com="urn://co-opbank.co.ke/CommonServices/Data/Common" xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:ns0="urn://co-opbank.co.ke/Banking/External/IPRS/1.0" xmlns:ns01="http://schemas.datacontract.org/2004/07/IPRSManager/CommonData" xmlns:ns012345="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" xmlns:rctx="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext" elementFormDefault="qualified" targetNamespace="urn://co-opbank.co.ke/CommonServices/Data/Event/Fault">
+      <xsd:import namespace="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader"/>
+      <xsd:import namespace="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext"/>
+      <xsd:import namespace="urn://co-opbank.co.ke/CommonServices/Data/Common"/>
+      <xsd:element name="Application" type="xsd:string"/>
+      <xsd:element name="ExceptionDescription" type="xsd:string"/>
+      <xsd:element name="ExceptionDetails" type="xsd:string"/>
+      <xsd:element name="FaultDetails" type="ns01234:FaultDetailsType"/>
+      <xsd:element name="ExceptionId" type="xsd:string"/>
+      <xsd:element name="ExceptionCode" type="xsd:string"/>
+      <xsd:element name="ExceptionName" type="xsd:string"/>
+      <xsd:element name="ExceptionTimestamp" type="xsd:dateTime"/>
+      <xsd:element name="Fault" type="ns01234:FaultType"/>
+      <xsd:element name="FaultContext" type="ns01234:FaultContextType"/>
+      <xsd:element name="FaultHeader" type="ns012345:ResponseHeaderType"/>
+      <xsd:element name="Hostname" type="xsd:string"/>
+      <xsd:element name="Instance" type="xsd:string"/>
+      <xsd:element name="Severity" type="xsd:string"/>
+      <xsd:element name="ValidationFault" type="ns01234:FaultType"/>
+      <xsd:element name="TechnicalFault" type="ns01234:FaultType"/>
+      <xsd:element name="BusinessFault" type="ns01234:FaultType"/>
+      <xsd:element name="ActivityName" type="xsd:string"/>
+      <xsd:element name="Msg" type="xsd:string"/>
+      <xsd:element name="MsgCode" type="xsd:string"/>
+      <xsd:element name="ProcessStack" type="xsd:string"/>
+      <xsd:element name="StackTrace" type="xsd:string"/>
+      <xsd:complexType name="FaultType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" ref="ns01234:FaultHeader"/>
+          <xsd:element minOccurs="0" ref="ns01234:Severity"/>
+          <xsd:element minOccurs="1" ref="ns01234:ExceptionId"/>
+          <xsd:element minOccurs="1" ref="ns01234:ExceptionTimestamp"/>
+          <xsd:element minOccurs="1" ref="ns01234:ExceptionCode"/>
+          <xsd:element minOccurs="0" ref="ns01234:ExceptionName"/>
+          <xsd:element minOccurs="0" ref="ns01234:ExceptionDescription"/>
+          <xsd:element minOccurs="0" ref="ns01234:ExceptionDetails"/>
+          <xsd:element minOccurs="0" ref="ns01234:FaultDetails"/>
+          <xsd:element minOccurs="0" ref="rctx:RuntimeContext"/>
+          <xsd:element maxOccurs="1" minOccurs="0" ref="com:Payload"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FaultContextType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="ns01234:Hostname"/>
+          <xsd:element minOccurs="0" ref="ns01234:Application"/>
+          <xsd:element minOccurs="0" ref="ns01234:Instance"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FaultDetailsType">
+        <xsd:sequence>
+          <xsd:element ref="ns01234:ActivityName"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:any maxOccurs="1" minOccurs="0" processContents="skip"/>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element ref="ns01234:Msg"/>
+          <xsd:element ref="ns01234:MsgCode"/>
+          <xsd:element ref="ns01234:ProcessStack"/>
+          <xsd:element ref="ns01234:StackTrace"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FaultListType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ns01234:Fault"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:ns0="urn://co-opbank.co.ke/Banking/External/IPRS/1.0" xmlns:ns01="http://schemas.datacontract.org/2004/07/IPRSManager/CommonData" xmlns:ns012="urn://co-opbank.co.ke/CommonServices/Data/Common" xmlns:ns0123="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext" xmlns:ns012345="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" elementFormDefault="qualified" targetNamespace="urn://co-opbank.co.ke/Banking/External/IPRS/1.0">
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/IPRSManager/CommonData"/>
+      <xsd:import namespace="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader"/>
+      <xsd:element name="GetCitizensDetailsRequest" type="ns0:IPRSRequestType"/>
+      <xsd:element name="GetCitizensDetailsResponse" type="ns0:IPRSResponseType"/>
+      <xsd:element name="GetCitizensDetailsReqData" type="ns01:GetIPRSDataByGenericID"/>
+      <xsd:element name="GetCitizensDetailsRespData" type="ns01:HumanInfoCommon"/>
+      <xsd:complexType name="IPRSRequestType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" ref="ns012345:RequestHeader"/>
+          <xsd:element maxOccurs="1" minOccurs="1" ref="ns0:GetCitizensDetailsReqData"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IPRSResponseType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" ref="ns012345:ResponseHeader"/>
+          <xsd:element maxOccurs="1" minOccurs="1" ref="ns0:GetCitizensDetailsRespData"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="operationRequest">
+    <wsdl:part element="ns012:RequestHeader" name="header"/>
+    <wsdl:part element="ns012345:GetCitizensDetailsReqData" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="operationResponse">
+    <wsdl:part element="ns012:ResponseHeader" name="header"/>
+    <wsdl:part element="ns012345:GetCitizensDetailsRespData" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="TechnicalFault">
+    <wsdl:part element="ns01234:TechnicalFault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ValidationFault">
+    <wsdl:part element="ns01234:ValidationFault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="BusinessFault">
+    <wsdl:part element="ns01234:BusinessFault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="Fault">
+    <wsdl:part element="ns01234:Fault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="IPRS">
+    <wsdl:operation name="GetDetails">
+      <wsdl:input message="ns:operationRequest" name="operationInput"/>
+      <wsdl:output message="ns:operationResponse" name="operationOutput"/>
+      <wsdl:fault message="ns:TechnicalFault" name="TechnicalFault"/>
+      <wsdl:fault message="ns:ValidationFault" name="ValidationFault"/>
+      <wsdl:fault message="ns:BusinessFault" name="BusinessFault"/>
+      <wsdl:fault message="ns:Fault" name="Fault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JMS-NORTH-SOAPServiceBinding" type="ns:IPRS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetDetails">
+      <wsdl:documentation/>
+      <soap:operation soapAction="GetDetails" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+        <soap:header message="ns:operationRequest" part="header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+        <soap:header message="ns:operationResponse" part="header" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="TechnicalFault">
+        <soap:fault name="TechnicalFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFault">
+        <soap:fault name="ValidationFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="BusinessFault">
+        <soap:fault name="BusinessFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="Fault">
+        <soap:fault name="Fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IPRS2">
+    <wsdl:port binding="ns:JMS-NORTH-SOAPServiceBinding" name="IPRS2SOAP">
+      <soap:address location="http://localhost:8080/Customer/IPRS/Validation"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:ns="urn://co-opbank.co.ke/DataModel/BS/Customer/SanctionDetails/Get/1.0/WSDL" xmlns:ns0="urn://co-opbank.co.ke/DataModel/Customer/SanctionDetails/Get/1.0" xmlns:ns01="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" xmlns:ns012="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext" xmlns:ns0123="urn://co-opbank.co.ke/CommonServices/Data/Event/Fault" xmlns:ns01234="urn://co-opbank.co.ke/CommonServices/Data/Common" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SanctionDetailsBS" targetNamespace="urn://co-opbank.co.ke/DataModel/BS/Customer/SanctionDetails/Get/1.0/WSDL">
+  <wsdl:types>
+    <xsd:schema xmlns:ns="urn://co-opbank.co.ke/DataModel/Customer/SanctionDetails/Get/1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn://co-opbank.co.ke/DataModel/Customer/SanctionDetails/Get/1.0">
+     
+
+
+	 	 <xsd:complexType name="sanctionDetailsInputType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="OperationParameters" nillable="true">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="1" name="MinMatchScore" nillable="false" type="xsd:string"/>
+                <xsd:element minOccurs="1" name="CustomerType" nillable="true" type="xsd:string"/>
+                <xsd:element minOccurs="1" name="FullName" nillable="true" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="FirstName" nillable="true" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="MiddleName" nillable="true" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="LastName" nillable="true" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="IdentificationDocType" nillable="true" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="IdentificationDocNo" nillable="true" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="Nationality" nillable="true" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="DateOfBirth" nillable="true" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="CountryOfBirth" nillable="true" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="AddressDetail" nillable="true" type="ns:AddressDetailType"/>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="sanctionDetailsOutputType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="NumberOfMatches" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Persons" type="ns:PersonsType"/>
+          <xsd:element minOccurs="0" name="Entities" type="ns:EntitiesType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AddressDetailType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="City" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="StateOrProvince" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PostalAddress" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ZipCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PostalCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Country" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonsType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Person" type="ns:PersonType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="IdentificationDocNo" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IdentificationDocType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Name" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Address" nillable="true" type="xsd:string"/>
+		  <xsd:element minOccurs="0" name="Nationality" nillable="true" type="xsd:string"/>
+		  <xsd:element minOccurs="0" name="DateofBirth" nillable="true" type="xsd:string"/>
+		  <xsd:element minOccurs="0" name="CountryofBirth" nillable="true" type="xsd:string"/>
+		  <xsd:element minOccurs="0" name="ListedBy" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MatchScore" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="EntitiesType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Entity" type="ns:EntityType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="EntityType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="IdentificationDocNo" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IdentificationDocType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Name" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Address" nillable="true" type="xsd:string"/>
+		  <xsd:element minOccurs="0" name="Nationality" nillable="true" type="xsd:string"/>
+		  <xsd:element minOccurs="0" name="DateofBirth" nillable="true" type="xsd:string"/>
+		  <xsd:element minOccurs="0" name="CountryofBirth" nillable="true" type="xsd:string"/>
+		  <xsd:element minOccurs="0" name="ListedBy" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MatchScore" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Person" type="ns:PersonType"/>
+      <xsd:element name="sanctionDetailsInput" type="ns:sanctionDetailsInputType"/>
+      <xsd:element name="sanctionDetailsOutput" nillable="true" type="ns:sanctionDetailsOutputType"/>
+    </xsd:schema>
+	
+	
+    <xsd:schema xmlns:com="urn://co-opbank.co.ke/CommonServices/Data/Common" xmlns:head="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" elementFormDefault="qualified" targetNamespace="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader">
+      <xsd:import namespace="urn://co-opbank.co.ke/CommonServices/Data/Common"/>
+      <xsd:element name="ApplicationVersion" type="xsd:string"/>
+      <xsd:element name="RequestHeader" type="head:RequestHeaderType"/>
+      <xsd:element name="ResponseHeader" type="head:ResponseHeaderType"/>
+      <xsd:element name="FaultTO" type="xsd:string"/>
+      <xsd:element name="MessageID" type="xsd:string"/>
+      <xsd:element name="ReplyTO" type="xsd:string"/>
+      <xsd:element name="Credentials" type="head:CredentialsType"/>
+      <xsd:element name="ElapsedTime" type="xsd:long"/>
+      <xsd:element name="StatusCode" type="xsd:string"/>
+      <xsd:element name="StatusDescription" type="xsd:string"/>
+      <xsd:element name="StatusDescriptionKey" type="xsd:string"/>
+      <xsd:element name="StatusMessages" type="head:StatusMessagesType"/>
+      <xsd:complexType name="RequestHeaderType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="com:CreationTimestamp"/>
+          <xsd:element minOccurs="0" ref="com:CorrelationID"/>
+          <xsd:element minOccurs="0" ref="head:FaultTO"/>
+          <xsd:element minOccurs="1" ref="head:MessageID"/>
+          <xsd:element minOccurs="0" ref="head:ReplyTO"/>
+          <xsd:element minOccurs="0" ref="head:Credentials"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResponseHeaderType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="com:CorrelationID"/>
+          <xsd:element minOccurs="0" ref="head:ElapsedTime"/>
+          <xsd:element minOccurs="1" ref="head:MessageID"/>
+          <xsd:element minOccurs="0" ref="head:StatusCode"/>
+          <xsd:element minOccurs="0" ref="head:StatusDescription"/>
+          <xsd:element minOccurs="0" ref="head:StatusDescriptionKey"/>
+          <xsd:element minOccurs="0" ref="head:StatusMessages"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CredentialsType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SystemCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Username" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Password" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Realm" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StatusMessagesType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ApplicationID" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MessageCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MessageDescription" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MessageType" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="operationRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="operation1Request">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="operation1Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="operationRequest1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="operationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="operationRequest2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="operationResponse1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns:tns="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext" elementFormDefault="qualified" targetNamespace="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext">
+      <xsd:element name="RuntimeContext" type="tns:RuntimeContextType"/>
+      <xsd:element name="ServiceName" type="xsd:string"/>
+      <xsd:element name="Application" type="xsd:string"/>
+      <xsd:element name="ApplicationVersion" type="xsd:string"/>
+      <xsd:element name="AppNode" type="xsd:string"/>
+      <xsd:element name="Hostname" type="xsd:string"/>
+      <xsd:complexType name="RuntimeContextType">
+        <xsd:sequence>
+          <xsd:element ref="tns:ServiceName"/>
+          <xsd:element ref="tns:Application"/>
+          <xsd:element ref="tns:ApplicationVersion"/>
+          <xsd:element ref="tns:AppNode"/>
+          <xsd:element ref="tns:Hostname"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:com="urn://co-opbank.co.ke/CommonServices/Data/Common" xmlns:head="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" xmlns:rctx="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext" xmlns:tns="urn://co-opbank.co.ke/CommonServices/Data/Event/Fault" elementFormDefault="qualified" targetNamespace="urn://co-opbank.co.ke/CommonServices/Data/Event/Fault">
+      <xsd:import namespace="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader"/>
+      <xsd:import namespace="urn://co-opbank.co.ke/CommonServices/Data/Internal/RuntimeContext"/>
+      <xsd:import namespace="urn://co-opbank.co.ke/CommonServices/Data/Common"/>
+      <xsd:element name="Application" type="xsd:string"/>
+      <xsd:element name="ExceptionDescription" type="xsd:string"/>
+      <xsd:element name="ExceptionDetails" type="xsd:string"/>
+      <xsd:element name="FaultDetails" type="tns:FaultDetailsType"/>
+      <xsd:element name="ExceptionId" type="xsd:string"/>
+      <xsd:element name="ExceptionCode" type="xsd:string"/>
+      <xsd:element name="ExceptionName" type="xsd:string"/>
+      <xsd:element name="ExceptionTimestamp" type="xsd:dateTime"/>
+      <xsd:element name="Fault" type="tns:FaultType"/>
+      <xsd:element name="FaultContext" type="tns:FaultContextType"/>
+      <xsd:element name="FaultHeader" type="head:ResponseHeaderType"/>
+      <xsd:element name="Hostname" type="xsd:string"/>
+      <xsd:element name="Instance" type="xsd:string"/>
+      <xsd:element name="Severity" type="xsd:string"/>
+      <xsd:element name="ValidationFault" type="tns:FaultType"/>
+      <xsd:element name="TechnicalFault" type="tns:FaultType"/>
+      <xsd:element name="BusinessFault" type="tns:FaultType"/>
+      <xsd:element name="ActivityName" type="xsd:string"/>
+      <xsd:element name="Msg" type="xsd:string"/>
+      <xsd:element name="MsgCode" type="xsd:string"/>
+      <xsd:element name="ProcessStack" type="xsd:string"/>
+      <xsd:element name="StackTrace" type="xsd:string"/>
+      <xsd:complexType name="FaultType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" ref="tns:FaultHeader"/>
+          <xsd:element minOccurs="0" ref="tns:Severity"/>
+          <xsd:element minOccurs="1" ref="tns:ExceptionId"/>
+          <xsd:element minOccurs="1" ref="tns:ExceptionTimestamp"/>
+          <xsd:element minOccurs="1" ref="tns:ExceptionCode"/>
+          <xsd:element minOccurs="0" ref="tns:ExceptionName"/>
+          <xsd:element minOccurs="0" ref="tns:ExceptionDescription"/>
+          <xsd:element minOccurs="0" ref="tns:ExceptionDetails"/>
+          <xsd:element minOccurs="0" ref="tns:FaultDetails"/>
+          <xsd:element minOccurs="0" ref="rctx:RuntimeContext"/>
+          <xsd:element maxOccurs="1" minOccurs="0" ref="com:Payload"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FaultContextType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="tns:Hostname"/>
+          <xsd:element minOccurs="0" ref="tns:Application"/>
+          <xsd:element minOccurs="0" ref="tns:Instance"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FaultDetailsType">
+        <xsd:sequence>
+          <xsd:element ref="tns:ActivityName"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:any maxOccurs="1" minOccurs="0" processContents="skip"/>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element ref="tns:Msg"/>
+          <xsd:element ref="tns:MsgCode"/>
+          <xsd:element ref="tns:ProcessStack"/>
+          <xsd:element ref="tns:StackTrace"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FaultListType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="tns:Fault"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:tns="urn://co-opbank.co.ke/CommonServices/Data/Common" elementFormDefault="qualified" targetNamespace="urn://co-opbank.co.ke/CommonServices/Data/Common">
+      <xsd:element name="CorrelationId" type="xsd:string"/>
+      <xsd:element name="CustomerId">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:length value="9"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CreationTimestamp" type="xsd:dateTime"/>
+      <xsd:element name="CorrelationID" type="xsd:string"/>
+      <xsd:element name="MessageID" type="xsd:string"/>
+      <xsd:element name="Payload" type="tns:PayloadType"/>
+      <xsd:element name="Domain" type="xsd:string"/>
+      <xsd:complexType name="PayloadType">
+        <xsd:sequence>
+          <xsd:any minOccurs="0" namespace="##any" processContents="skip"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getSanctionDetailsInput">
+    <wsdl:part element="ns01:RequestHeader" name="headerRequest"/>
+    <wsdl:part element="ns0:sanctionDetailsInput" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getSanctionDetailsOutput">
+    <wsdl:part element="ns01:ResponseHeader" name="headerReply"/>
+    <wsdl:part element="ns0:sanctionDetailsOutput" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="TechnicalFault">
+    <wsdl:part element="ns0123:TechnicalFault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ValidationFault">
+    <wsdl:part element="ns0123:ValidationFault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="BusinessFault">
+    <wsdl:part element="ns0123:BusinessFault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="Fault">
+    <wsdl:part element="ns0123:Fault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="SanctionDetailsBS">
+    <wsdl:operation name="SanctionDetails">
+      <wsdl:input message="ns:getSanctionDetailsInput"/>
+      <wsdl:output message="ns:getSanctionDetailsOutput"/>
+      <wsdl:fault message="ns:TechnicalFault" name="TechnicalFault"/>
+      <wsdl:fault message="ns:ValidationFault" name="ValidationFault"/>
+      <wsdl:fault message="ns:BusinessFault" name="BusinessFault"/>
+      <wsdl:fault message="ns:Fault" name="Fault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SOAPServiceBinding" type="ns:SanctionDetailsBS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SanctionDetails">
+      <soap:operation soapAction="SanctionDetails" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+        <soap:header message="ns:getSanctionDetailsInput" part="headerRequest" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+        <soap:header message="ns:getSanctionDetailsOutput" part="headerReply" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="BusinessFault">
+        <soap:fault name="BusinessFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="TechnicalFault">
+        <soap:fault name="TechnicalFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFault">
+        <soap:fault name="ValidationFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="Fault">
+        <soap:fault name="Fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SanctionDetailsBS">
+    <wsdl:port binding="ns:SOAPServiceBinding" name="SanctionDetailsBSSOAP">
+      <soap:address location="http://localhost:8080/SOAPServiceBinding/sanctionDetailsBS/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
